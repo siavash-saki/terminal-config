@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 3,
+  "final_space": true,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "",
+          "foreground": "#100e23",
+          "background": "#f2c94c",
+          "template": " {{ .UserName }} "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#100e23",
+          "background": "#ee7b34",
+          "properties": {
+            "style": "folder"
+          },
+          "template": " \uf07b {{ .Path }} "
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#100e23",
+          "background": "#4caf6d",
+          "properties": {
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "branch_icon": "\ue725 "
+          },
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} "
+        },
+        {
+          "type": "status",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#ffffff",
+          "background": "#3b9fe0",
+          "properties": {
+            "always_enabled": true
+          },
+          "template": " {{ if eq .Code 0 }}\uf00c{{ else }}\uf00d{{ end }} "
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#6c7bb0",
+          "template": "in "
+        },
+        {
+          "type": "shell",
+          "style": "plain",
+          "foreground": "#3b9fe0",
+          "template": "{{ .Name }}"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#6c7bb0",
+          "template": " at "
+        },
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "#3b9fe0",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "template": "{{ .CurrentDate | date .Format }}"
+        }
+      ]
+    }
+  ]
+}
